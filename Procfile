@@ -1,1 +1,1 @@
-web : gunicorn rest_iot.wsgi
+web: gunicorn rest_iot.wsgi
