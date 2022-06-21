@@ -29,44 +29,25 @@ class ReadingViews(APIView):
 
         def post(self, request, format=None):
             time = request.data['time']
-            for key, value in request.data.items():
 
-                if key == 'density':
-                    a = models.density(reading=value, time=time)
-                    models.density.save(a)
-
-                elif key == 'dew':
-                    a = models.dew(reading=value, time=time)
-                    models.dew.save(a)
-
-                elif key == 'direction':
-                    a = models.direction(reading=value, time=time)
-                    models.direction.save(a)
-
-                elif key == 'height':
-                    a = models.height(reading=value, time=time)
-                    models.height.save(a)
-
-                elif key == 'humidity':
-                    a = models.humidity(reading=value, time=time)
-                    models.humidity.save(a)
-
-                elif key == 'precipitation':
-                    a = models.precipitation(reading=value, time=time)
-                    models.precipitation.save(a)
-
-                elif key == 'pressure':
-                    a = models.pressure(reading=value, time=time)
-                    models.pressure.save(a)
-
-                elif key == 'speed':
-                    a = models.speed(reading=value, time=time)
-                    models.speed.save(a)
-
-                elif key == 'temperature':
-                    a = models.temperature(reading=value, time=time)
-                    models.temperature.save(a)
-
+            a = models.density(reading=request.data['density'], time=time)
+            a.save()
+            a = models.dew(reading=request.data['dew'], time=time)
+            a.save()
+            a = models.direction(reading=request.data['direction'], time=time)
+            a.save()
+            a = models.height(reading=request.data['height'], time=time)
+            a.save()
+            a = models.humidity(reading=request.data['humidity'], time=time)
+            a.save()
+            a = models.precipitation(reading=request.data['precipitation'], time=time)
+            a.save()
+            a = models.pressure(reading=request.data['pressure'], time=time)
+            a.save()
+            a = models.speed(reading=request.data['speed'], time=time)
+            a.save()
+            a = models.temperature(reading=request.data['temperature'], time=time)
+            a.save()
 
             return Response({'received data': request.data})
 
